@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="./main/mainweb.css">
+    <link rel="icon" href="./main/img/logo.webp">
+    <script src="https://kit.fontawesome.com/fca5520d90.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+
+    <!-- !FONTS AND CMDS ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&family=Lexend+Giga:wght@900&family=Lexend:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <section>
+
+        <nav id="nav">
+            <i class="fa-solid fa-xmark close" onclick="closeMenu()"></i>
+            <ul>
+                <li><a href="#consTrack" onclick="closeMenu()">Consumption</a></li>
+                <li><a href="#leakDetect" onclick="closeMenu()">Leak Detection</a></li>
+                <li><a href="#" onclick="closeMenu()">Cost Calculator</a></li>
+                <li><a href="#" onclick="closeMenu()">Smart Irrigation</a></li><br>
+                <li><a href="#" onclick="closeMenu()">Feedback!</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="top">
+            <a href="logout.php"><i class="fa-solid fa-user"></i></a>
+            <i class="fa-solid fa-bars" onclick="openMenu()"></i>
+        </div>
+
+        <div class="welcome">
+            <h1>WELCOME HOME</h1>
+            <h3>Ameen😁</h3>
+            <img src="./main/img/hi.png">
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="section-pad">
+        <div class="cons-data">
+            <h1>TRACK YOUR CONSUMPTION</h1>
+            <h3>Avg bill for today: <br> <b>AED 40</b></h3>
+            <h2>Today's consumption is 10% higher than yesterday</h2>
+        </div>
+
+        <div class="chart-div">
+            <canvas id="lineChart"></canvas>
+        </div>
+
+
+
+    </section>
+
+
+
+
+    <section class="section-pad">
+        <div class="cons-data">
+            <h1>LEAK DETECTION</h1>
+        </div>
+        <div class="webdiv marg-top" id="webDiv">
+
+            <!-- <video id="webCam" class="webcam" autoplay playsinline></video>
+            <canvas id="canvas"></canvas> -->
+        </div>
+        <button class="leakbut" onclick="onCam()">Scan Leaks</button>
+    </section>
+
+
+
+
+
+
+    <section class="section-pad cost-cal-sec">
+        <div class="cons-data">
+            <h1>COST CALCULATOR</h1>
+        </div>
+        <div class="cost-cal">
+            <div class="username">
+                <label>Total number of family members:</label>
+                <input type="number" name="uname" placeholder="Enter.." id="fam">
+            </div>
+
+            <div class="username">
+                <label>No. of baths per day</label>
+                <input type="number" name="password" placeholder="Enter.." id="bath">
+            </div>
+            
+            <div class="username">
+                <label>Washing machine used per day.</label>
+                <input type="number" name="password" placeholder="Enter.." id="wm">
+            </div>
+
+            <div class="username">
+                <label>Times the dishwasher is used.</label>
+                <input type="number" name="password" placeholder="Enter.." id="dw">
+            </div>
+
+            <div class="username">
+                <label>Garden hose amount used (L)</label>
+                <input type="number" name="password" placeholder="Enter.." id="hose"> 
+            </div>
+
+            <div class="username">
+                <label>The required budget per day</label>
+                <input type="number" max="" name="password" placeholder="Enter.." id="budget">
+            </div>
+            <button id="calculate">CALCULATE</button>
+
+        </div>
+
+        <div class="result">
+            <h1>USAGE p. DAY:</h1>
+            <h2><b class="ans" id="result"></b> Litres per day</h2>
+
+            <p>If your budget is AED <b id="resBudget"></b> per day
+                and your water rate is AED 0.04 per
+                litre, you need to reduce your
+                daily water usage by <b id="reduce"></b> litres per
+                day
+            </p>
+        </div>
+            
+    </section>
+
+
+
+
+    <section class="cost-cal-sec smart-ir">
+        <div class="cons-data">
+            <h1>SMART IRRIGATION</h1>
+            <p class="small">Use our AI-powered smart
+                irrigation feature to help you 
+                in taking the right choices:</p>
+        </div>
+        <div class="cons-data">
+            <h1 class="marg-top">45kg/m3</h1>
+            <h4>SOIL MOISTURE TODAY</h4>
+        </div>
+
+        <div class="chart-div">
+            <canvas id="lineChartt"></canvas>
+        </div>
+
+        <div class="card marg-top">
+            <div class="search">
+              <input type="text" placeholder="enter city name" spellcheck="false">
+              <button><img src="./main/img/images/search.png"></button>
+            </div> 
+            <div class="error">
+              <p>Invalid city name</p>
+            </div>
+            <div class="weather">
+              <img src="./main/img/images/rain.png" class="weather-icon">
+              <h1 class="temp">22°c</h1>
+              <h2 class="city">New York</h2>
+              <div class="details">
+                  <div class="col">
+                      <img src="./main/img/images/humidity.png"> 
+                      <div>
+                          <p class="humidity">50%</p>
+                          <p>Humidity</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <img src="./main/img/images/wind.png"> 
+                      <div>
+                          <p class="wind">15 km/hr</p>
+                          <p>Wind Speed</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>   
+          
+          <script>
+          
+          const apiKey="8f4df03fe4fb2c928c6fae2d9a985afd"
+          const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+          
+          const searchBox = document.querySelector(".search input");
+          const searchBtn = document.querySelector(".search button");
+          const weatherIcon = document.querySelector(".weather-icon");
+          
+          async function checkWeather(city){
+              const response =await fetch(apiUrl + city + `&appid=${apiKey}`);
+          
+              if(response.status ==404){
+                  document.querySelector(".error").style.display = "block";
+                  document.querySelector(".weather").style.display = "none";
+              }else{
+                  var data = await response.json();
+          
+                  document.querySelector(".city").innerHTML = data.name;
+                  document.querySelector(".temp").innerHTML = Math.round(data.main.temp)+ "°c";
+                  document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                  document.querySelector(".wind").innerHTML = data.wind.speed + "km/hr";
+              
+                  if(data.weather[0].main =="Clouds"){
+                      weatherIcon.src = "./main/img/images/clouds.png";
+                      }
+                  else if (data.weather[0].main =="Clear"){
+                      weatherIcon.src = "./main/img/images/clear.png";
+                  }
+                  else if (data.weather[0].main =="Rain"){
+                      weatherIcon.src = "./main/img/images/rain.png";
+                  }
+                  else if (data.weather[0].main =="Drizzle"){
+                      weatherIcon.src = "./main/img/images/drizzle.png";
+                  }
+                  else if (data.weather[0].main =="Mist"){
+                      weatherIcon.src = "./main/img/images/mist.png";
+                  }
+              
+                  document.querySelector(".weather").style.display = "block";
+                  document.querySelector(".error").style.display = "none";
+          
+              }
+             
+              }
+          
+          
+              searchBtn.addEventListener("click", ()=>{
+                  checkWeather(searchBox.value);
+              })
+          
+          
+          </script>
+        
+        <div class="cons-data marg-top">
+            <h1>CROP TYPE</h1>
+            <div class="crop-type marg-top">
+                <input type="text" placeholder="Crop type" id="cropInp">
+                <button onclick="cropType()"><i class="fa-solid fa-right-to-bracket"></i></button>
+            </div>
+        </div>
+
+        <div class="cons-data" id="consData">
+            <h1 id="cropResult" class="marg-top"></h1>
+        </div>
+    </section>
+
+    <script>
+        function cropType() {
+            
+            const cropResult = document.getElementById('cropResult');
+            
+            var cropInp = document.getElementById('cropInp');
+
+            const consData = document.getElementById('consData')
+            var p = document.createElement('p');
+
+            p.classList.add('small')
+            p.innerHTML = 'Since <b id="cropSubResult"></b> doesnt require much water, and its going to rain anyway, the irrigation system will remain off today'
+
+            console.log(p)
+
+            consData.appendChild(p)
+
+            const cropSubResult = document.getElementById('cropSubResult');
+
+
+            cropResult.innerHTML = cropInp.value
+            cropSubResult.innerHTML = cropInp.value
+
+
+        }
+    </script>
+
+
+    <section>
+        <div class="cons-data">
+            <h1>FEEDBACK!</h1>
+            <p class="small">Your feedback is valuable to us. Please feel 
+                free to drop a comment below to help us improve!    
+            </p>
+        </div>  
+
+        <form class="feedback" onsubmit="sendEmail(); reset(); return false;">
+            <div class="username">
+                <label for="e-mail">E-mail:</label>
+                <input type="email" id="emailGib">
+            </div>
+
+            <div class="username">
+                <label for="comment">Comment</label>
+                <textarea name="comment" id="textArea" cols="30" rows="10"></textarea>
+            </div>
+
+            <button type="submit">SUBMIT!</button>
+        </form>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const nav = document.getElementById('nav')
+        function openMenu() {
+            nav.style.right = '0px';
+        }
+        function closeMenu() {
+            nav.style.right = '-100%';
+        }
+
+
+        function onCam() {
+            // const webCamElement = document.getElementById('webCam')
+            // const canvasElement = document.getElementById('canvas')
+
+            // const webcam = new Webcam(webCamElement, 'user', canvas);
+            // webcam.start();
+
+            var iframe = document.createElement("iframe")
+            iframe.src = "ar.html"
+            var parentDiv = document.getElementById("webDiv");
+            parentDiv.appendChild(iframe)
+        }
+
+
+
+        function sendEmail() {
+            Email.send({
+                Host : "smtp.elasticemail.com",
+                Username : "aahmed009@outlook.com",
+                Password : "3218E986FF26CA339B42C81BAC6A9A89BDDA",
+                To : 'kumartrex2020@gmail.com',
+                From : document.getElementById('emailGib').value,
+                Subject : "New Feedback Recieved",
+                Body : document.getElementById('textArea').value
+        }).then(
+        message => alert(message)
+        );
+        }
+
+        console.log(document.getElementById('emailGib').value)
+    </script>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="./main/js/chart.js"></script>
+    <script src="./main/js/app.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+</body>
+</html>

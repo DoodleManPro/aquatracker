@@ -1,0 +1,556 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color: #4396F7;
+    --text: #111111;
+}
+
+body {
+    max-width: 375px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.top i {
+    font-size: 2em;
+    text-decoration: none;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+.top a i {
+    color: var(--main-color);
+}
+
+.welcome {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6.5em;
+}
+
+.welcome h1 {
+    font-size: 3em;
+    padding: 0 2em;
+    text-align: center;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+}
+
+.welcome h3 {
+    margin-top: .5em;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: var(--main-color);
+}
+
+.welcome img {
+    margin-top: 3.5em;
+    width: 70%;
+}
+
+
+
+
+
+
+
+/* !NAV */
+
+nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100vw;
+    height: 100%;
+    z-index: 10000;
+    background: url(./img/Menu.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .2s ease-in-out;
+}
+
+.close {
+    font-size: 2em;
+    text-decoration: none;
+    margin-right: -80%;
+    cursor: pointer;
+}
+
+nav ul {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav li {
+    margin-top: 2em;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+
+
+
+
+
+
+/* !TRACK YOUR CONSUMPTION */
+.section-pad {
+    padding-top: 6.8em;
+}
+
+.cons-data {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.cons-data h1 {
+    font-size: 3em;
+    padding: 0 2em;
+    text-align: center;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+}
+
+.cons-data h3 {
+    margin-top: 2em;
+    font-weight: 400;
+    font-size: 2em;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cons-data h2 {
+    font-weight: 400;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.chart-div {
+    margin-top: 4em;
+    width: 95%;
+}
+
+
+
+
+
+
+
+/* LEAK DETECTION */
+
+.red {
+    color: red;
+}
+.webdiv {
+    position: relative;
+    width: 95%;
+    height: 50vh;
+    overflow: hidden;
+}
+.canvas {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+
+.webcam {
+    position: absolute;
+    top: 0;
+    left: -5%;
+    height: 20%;
+}
+
+.leakbut {
+    border: none;
+    padding: .25em 1em;
+    border-radius: 2em;
+    color: white;
+    background-color: var(--main-color);
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: .5em;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.leakbut:hover {
+    background-color: #2289ff;
+}
+
+.leakbut:active {
+    background-color: #057aff;
+}
+
+
+
+
+
+/* !COST CALCULATOR */
+
+
+.cost-cal-sec {
+    height: 180vh;
+}
+
+.cost-cal {
+    width: 100%;
+    height: 100vh;
+}
+.cost-cal .username {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.cost-cal input {
+    border: none;
+    padding: .5em;
+    background: rgba(67, 150, 247, .3);
+    
+    margin-top: .5em;
+}
+
+.cons-data input {
+    border: none;
+    padding: .5em;
+    background: rgba(67, 150, 247, .3);
+    width: 60%;
+}
+ 
+.cost-cal input::placeholder {
+    color: #419dff;
+}
+
+.cost-cal button {
+    border: none;
+    padding: .25em 1em;
+    border-radius: 2em;
+    color: white;
+    background-color: var(--main-color);
+    font-size: 2em;
+    margin-bottom: 1em;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.crop-type {
+    
+    margin-top: .5em;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crop-type button {
+    border: none;
+    padding: .25em 1em;
+    border-radius: 2em;
+    color: white;
+    background-color: var(--main-color);
+    font-size: 1em;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 0;
+    margin-left: .5em;
+}
+
+.crop-type input:focus {
+    outline: none;
+}
+
+.crop-type button i {
+    color: white;
+    margin: 0;
+    transform: translateY(10%);
+}
+
+.cost-cal button:hover {
+    background-color: #2289ff;
+}
+
+.cost-cal button:active {
+    background-color: #057aff;
+}
+
+.cost-cal input:focus {
+    outline: none;
+}
+
+.result {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result h1 {
+    font-size: 3em;
+    padding: 0 .5em;
+    text-align: center;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+    margin-top: 2em;
+}
+
+.result h2 {
+    margin-top: .25em;
+    font-weight: 300;
+    font-size: 2em;
+    text-align: center;
+    overflow: hidden;
+}
+
+.result p {
+    width: 90%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+b {
+    font-weight: 300;
+    color: var(--main-color);
+}
+
+.small {
+    margin-top: 2em;
+    text-align: center;
+    width: 95%;
+}
+
+
+
+
+
+
+/* !FEEDBACK */
+
+.feedback {
+    width: 100%;
+}
+.feedback .username {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.feedback input {
+    border: none;
+    padding: .5em;
+    margin-top: .5em;
+    background: rgba(67, 150, 247, .3);
+}
+
+.feedback textarea {
+    border: none;
+    padding: .5em;
+    margin-top: .5em;
+    background: rgba(67, 150, 247, .3);
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.feedback button {
+    border: none;
+    padding: .25em 1em;
+    border-radius: 2em;
+    color: white;
+    background-color: var(--main-color);
+    font-size: 2em;
+    margin-bottom: 1em;
+    font-family: 'KoHo', sans-serif;
+    font-weight: 700;
+    transition: .2s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.feedback button:hover {
+    background-color: #2289ff;
+}
+
+.feedback button:active {
+    background-color: #057aff;
+}
+
+.feedback input:focus {
+    outline: none;
+}
+
+iframe {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border: none;
+}
+
+a-scene {
+    display: block; width: 50%;
+}
+
+.marg-top {
+    margin-top: 1.5em;
+}
+
+.cons-data h4 {
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-top: .5em;
+}
+
+.smart-ir {
+    height: 190vh;
+}
+.card{
+    width: 80%;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+    margin-top: 5em;
+}
+.search{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 0 auto;
+}
+.search input{
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  color: #555;
+  padding: 10px 25px;
+  height: 60px;
+  border-radius: 30px;
+  flex: 1;
+  margin-right: 16px ;
+  font-size: 18px;
+}
+.search button {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+.search button img{
+    width: 16px;
+}
+.weather-icon{
+    width: 170px;
+    margin-top: 30px;
+}
+.weather h1{
+    font-size: 80px;
+    font-weight: 500;
+}
+.weather h2{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+.details{
+    width: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.col{
+    display: flex;
+    align-items:center;
+    text-align: left;
+}
+.col img{
+    width: 40px;
+    margin-right:10px;
+}
+.humidity,.wind{
+    font-size: 28px;
+    margin-top: -6px;
+}
+.weather{
+    display: none;
+}
+.error{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
