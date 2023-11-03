@@ -22,6 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&family=Lexend+Giga:wght@900&family=Lexend:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 
 </head>
 <body>
@@ -46,7 +49,7 @@
 
         <div class="welcome">
             <h1>WELCOME HOME</h1>
-            <h3>Ameen😁</h3>
+            <h3>Ameen 😁</h3>
             <img src="./main/img/hi.png">
         </div>
     </section>
@@ -76,7 +79,7 @@
 
 
 
-    <section class="section-pad">
+    <section class="section-pad rel">
         <div class="cons-data">
             <h1>LEAK DETECTION</h1>
         </div>
@@ -86,7 +89,27 @@
             <canvas id="canvas"></canvas> -->
         </div>
         <button class="leakbut" onclick="onCam()">Scan Leaks</button>
+        <button class="show">Show Alert</button>
+        <div class="alert hide">
+            <span class="msg">Warning: Potential leak detected!</span>
+        </div>
     </section>
+
+    <script>
+            $('.show').click(function(){
+              $('.alert').addClass("show");
+              $('.alert').removeClass("hide");
+              $('.alert').addClass("showAlert");
+              setTimeout(function(){
+                $('.alert').removeClass("show");
+                $('.alert').addClass("hide");
+              },5000);
+            });
+            $('.close-btn').click(function(){
+              $('.alert').removeClass("show");
+              $('.alert').addClass("hide");
+            });
+        </script>
 
 
 
@@ -127,11 +150,23 @@
                 <label>The required budget per day</label>
                 <input type="number" max="" name="password" placeholder="Enter.." id="budget">
             </div>
-            <button id="calculate">CALCULATE</button>
+            <button class="calbut"id="calculate">CALCULATE</button>
+
+            <div class="contain">
+            <button class="show">Show Alert</button>
+            </div>
+            <div class="alert hide snd">
+                <span class="msg">Warning: Potential leak detected!</span>
+            </div>
+
+
 
         </div>
 
         <div class="result">
+            <div class="alert hide snd">
+                <span class="msg">Warning: Potential leak detected!</span>
+            </div>
             <h1>USAGE p. DAY:</h1>
             <h2><b class="ans" id="result"></b> Litres per day</h2>
 
@@ -144,6 +179,23 @@
         </div>
             
     </section>
+
+    
+    <script>
+            $('.show').click(function(){
+              $('.alert').addClass("show");
+              $('.alert').removeClass("hide");
+              $('.alert').addClass("showAlert");
+              setTimeout(function(){
+                $('.alert').removeClass("show");
+                $('.alert').addClass("hide");
+              },5000);
+            });
+            $('.close-btn').click(function(){
+              $('.alert').removeClass("show");
+              $('.alert').addClass("hide");
+            });
+        </script>
 
 
 
@@ -163,7 +215,9 @@
         <div class="chart-div">
             <canvas id="lineChartt"></canvas>
         </div>
-
+        <div class="cons-data no-bot">
+            <h1 class="marg-top">WEATHER CHECK</h1>
+        </div>
         <div class="card marg-top">
             <div class="search">
               <input type="text" placeholder="enter city name" spellcheck="false">
@@ -248,7 +302,8 @@
           
           
           </script>
-        
+
+
         <div class="cons-data marg-top">
             <h1>CROP TYPE</h1>
             <div class="crop-type marg-top">
@@ -273,7 +328,7 @@
             var p = document.createElement('p');
 
             p.classList.add('small')
-            p.innerHTML = 'Since <b id="cropSubResult"></b> doesnt require much water, and its going to rain anyway, the irrigation system will remain off today'
+            p.innerHTML = 'Since your growing <b id="cropSubResult"></b>, and its going to rain soon, the irrigation system will remain off today'
 
             console.log(p)
 
@@ -376,6 +431,7 @@
     <script src="./main/js/chart.js"></script>
     <script src="./main/js/app.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./main/js/chart2.js"></script>
 
 
 </body>
