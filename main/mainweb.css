@@ -251,7 +251,7 @@ nav a {
 
 .cost-cal {
     width: 100%;
-    height: 100vh;
+    height: 110vh;
 }
 .cost-cal .username {
     margin: 2em;
@@ -277,7 +277,7 @@ nav a {
     color: #419dff;
 }
 
-.cost-cal button {
+.calbut {
     border: none;
     padding: .25em 1em;
     border-radius: 2em;
@@ -468,8 +468,13 @@ a-scene {
     margin-top: .5em;
 }
 
+
 .smart-ir {
     height: 250vh;
+}
+
+.no-bot {
+    margin-bottom: -2em;
 }
 .card{
     width: 80%;
@@ -553,4 +558,131 @@ a-scene {
     font-size: 14px;
     margin-top: 10px;
     display: none;
+}
+
+
+
+
+
+
+
+.show{
+    padding: 8px 16px;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: rgb(232, 93, 62);
+    color: white;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.fa-exclamation-circle {
+    font-size: 1px;
+}
+.alert{
+    background: rgb(249, 164, 144);
+    padding: 10px 20px;
+    min-width: 250px;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    border-radius: 4px;
+    border-left: 8px solid rgb(232, 93, 62);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    font-size: .5em;
+}
+.alert.showAlert{
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert.show{
+    animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+    0%{
+      transform: translateX(100%);
+    }
+    40%{
+      transform: translateX(-10%);
+    }
+    80%{
+      transform: translateX(0%);
+    }
+    100%{
+      transform: translateX(-10px);
+    }
+}
+.alert.hide{
+    animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+    0%{
+      transform: translateX(-10px);
+    }
+    40%{
+      transform: translateX(0%);
+    }
+    80%{
+      transform: translateX(-10%);
+    }
+    100%{
+      transform: translateX(100%);
+    }
+}
+
+.webdiv {
+    position: relative;
+}
+.alert{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(206, 38, 0);
+    font-size: .5em;
+}
+.rel {
+    position: relative;
+}
+.alert .msg{
+    padding: 0 0;
+    font-size: 2em;
+    color: rgb(206, 38, 0);
+}
+.alert .close-btn{
+    position: absolute;
+    right: 0px;
+    bottom: 0%;
+    transform: translateY(-50%);
+    background: rgb(206, 38, 0);
+    padding: 20px 18px;
+    cursor: pointer;
+}
+.alert .close-btn:hover{
+    background: #ffc766;
+}
+.alert .close-btn .fass{
+    color: rgb(206, 38, 0);
+    font-size: 22px;
+    line-height: 40px;
+}
+
+.contain {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.result {
+    position: relative;
+}
+
+.snd {
+    position: absolute;
+    top: 0;
 }
